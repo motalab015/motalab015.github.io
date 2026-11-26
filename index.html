@@ -38,54 +38,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0b0f14;
-      --bg-alt: #0e141b;
-      --surface: #121821;
-      --border: #1f2833;
-      --text: #e6edf3;
-      --muted: #8b98a8;
-      --accent: #2dd4bf;
-      --accent-ink: #04211d;
-      --accent-soft: rgba(45, 212, 191, 0.12);
-      --glow: rgba(45, 212, 191, 0.18);
-      --danger: #f87171;
-      --warn: #fbbf24;
+      --bg: #0b0f14; --bg-alt: #0e141b; --surface: #121821; --border: #1f2833;
+      --text: #e6edf3; --muted: #8b98a8; --accent: #2dd4bf; --accent-ink: #04211d;
+      --accent-soft: rgba(45, 212, 191, 0.12); --glow: rgba(45, 212, 191, 0.18);
+      --danger: #f87171; --warn: #fbbf24;
       --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
     :root[data-theme="light"] {
-      --bg: #f7f9fb;
-      --bg-alt: #eef2f6;
-      --surface: #ffffff;
-      --border: #dde3ea;
-      --text: #0f1720;
-      --muted: #5a6776;
-      --accent: #0d9488;
-      --accent-ink: #ffffff;
-      --accent-soft: rgba(13, 148, 136, 0.10);
-      --glow: rgba(13, 148, 136, 0.15);
+      --bg: #f7f9fb; --bg-alt: #eef2f6; --surface: #ffffff; --border: #dde3ea;
+      --text: #0f1720; --muted: #5a6776; --accent: #0d9488; --accent-ink: #ffffff;
+      --accent-soft: rgba(13, 148, 136, 0.10); --glow: rgba(13, 148, 136, 0.15);
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    [hidden] { display: none !important; }
     html { scroll-behavior: smooth; scroll-padding-top: 72px; }
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: var(--bg); color: var(--text);
       font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.65;
-      -webkit-font-smoothing: antialiased;
-      transition: background .25s, color .25s;
+      line-height: 1.65; -webkit-font-smoothing: antialiased; transition: background .25s, color .25s;
     }
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .wrap { max-width: 1040px; margin: 0 auto; padding: 0 22px; }
     :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-    /* ---------- Nav ---------- */
-    header {
-      position: sticky; top: 0; z-index: 50;
-      background: color-mix(in srgb, var(--bg) 85%, transparent);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--border);
-    }
+    /* Nav */
+    header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 85%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
     nav { display: flex; justify-content: space-between; align-items: center; height: 64px; }
     .logo { font-weight: 800; letter-spacing: -0.3px; color: var(--text); font-size: 1.05rem; }
     .logo span { color: var(--accent); }
@@ -94,38 +72,20 @@
     nav ul a { color: var(--muted); font-size: 0.9rem; font-weight: 500; padding: 4px 0; border-bottom: 2px solid transparent; }
     nav ul a:hover { color: var(--text); text-decoration: none; }
     nav ul a.active { color: var(--text); border-bottom-color: var(--accent); }
-    .icon-btn {
-      background: var(--surface); border: 1px solid var(--border); color: var(--text);
-      width: 38px; height: 38px; border-radius: 10px; cursor: pointer;
-      display: grid; place-items: center; font-size: 1rem;
-    }
+    .icon-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text); width: 38px; height: 38px; border-radius: 10px; cursor: pointer; display: grid; place-items: center; font-size: 1rem; }
     .icon-btn:hover { border-color: var(--accent); }
     .menu-btn { display: none; }
 
-    /* ---------- Hero ---------- */
+    /* Notice (errors) */
+    .notice { background: color-mix(in srgb, var(--warn) 14%, var(--surface)); border: 1px solid color-mix(in srgb, var(--warn) 50%, transparent); color: var(--text); padding: 12px 16px; border-radius: 10px; margin: 18px 0 0; font-size: 0.9rem; }
+    .notice code { font-family: var(--mono); font-size: 0.85em; }
+
+    /* Hero */
     .hero { position: relative; overflow: hidden; padding: 96px 0 84px; }
-    .hero::before {
-      content: ""; position: absolute; inset: 0; z-index: 0;
-      background:
-        radial-gradient(600px 300px at 85% 20%, var(--glow), transparent 70%),
-        radial-gradient(500px 260px at 0% 100%, var(--glow), transparent 70%);
-      pointer-events: none;
-    }
-    .hero::after {
-      content: ""; position: absolute; inset: 0; z-index: 0; opacity: .5;
-      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: radial-gradient(ellipse at 70% 30%, #000 0%, transparent 65%);
-      -webkit-mask-image: radial-gradient(ellipse at 70% 30%, #000 0%, transparent 65%);
-      pointer-events: none;
-    }
+    .hero::before { content: ""; position: absolute; inset: 0; z-index: 0; background: radial-gradient(600px 300px at 85% 20%, var(--glow), transparent 70%), radial-gradient(500px 260px at 0% 100%, var(--glow), transparent 70%); pointer-events: none; }
+    .hero::after { content: ""; position: absolute; inset: 0; z-index: 0; opacity: .5; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse at 70% 30%, #000 0%, transparent 65%); -webkit-mask-image: radial-gradient(ellipse at 70% 30%, #000 0%, transparent 65%); pointer-events: none; }
     .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.4fr 0.9fr; gap: 48px; align-items: center; }
-    .tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent-soft); color: var(--accent);
-      border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
-      padding: 5px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 500; margin-bottom: 22px;
-    }
+    .tag { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-soft); color: var(--accent); border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent); padding: 5px 14px; border-radius: 999px; font-size: 0.82rem; font-weight: 500; margin-bottom: 22px; }
     .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 var(--accent); animation: pulse 2s infinite; }
     @keyframes pulse { 70% { box-shadow: 0 0 0 8px transparent; } 100% { box-shadow: 0 0 0 0 transparent; } }
     .hero h1 { font-size: clamp(2.3rem, 5.6vw, 3.7rem); line-height: 1.1; letter-spacing: -1.2px; font-weight: 800; margin-bottom: 14px; }
@@ -136,61 +96,45 @@
     @keyframes blink { 50% { opacity: 0; } }
     .hero p.lead { color: var(--muted); font-size: 1.08rem; max-width: 560px; margin-bottom: 30px; }
     .btns { display: flex; gap: 12px; flex-wrap: wrap; }
-    .btn {
-      padding: 12px 24px; border-radius: 10px; font-weight: 600; font-size: 0.95rem;
-      border: 1px solid var(--accent); display: inline-flex; align-items: center; gap: 8px; transition: transform .15s, opacity .15s;
-    }
+    .btn { padding: 12px 24px; border-radius: 10px; font-weight: 600; font-size: 0.95rem; border: 1px solid var(--accent); display: inline-flex; align-items: center; gap: 8px; transition: transform .15s, opacity .15s; }
     .btn.primary { background: var(--accent); color: var(--accent-ink); }
     .btn.ghost { color: var(--accent); }
     .btn:hover { text-decoration: none; transform: translateY(-2px); }
     .stats { display: flex; gap: 40px; margin-top: 46px; flex-wrap: wrap; }
     .stat b { display: block; font-size: 1.7rem; font-weight: 800; letter-spacing: -0.5px; }
     .stat small { color: var(--muted); font-size: 0.85rem; }
-
     .avatar-wrap { display: flex; justify-content: center; }
-    .avatar {
-      position: relative; width: min(280px, 70vw); aspect-ratio: 1; border-radius: 28px;
-      background: linear-gradient(145deg, var(--accent), #38bdf8);
-      display: grid; place-items: center;
-      font-size: 5.2rem; font-weight: 800; letter-spacing: -3px; color: var(--accent-ink);
-      transform: rotate(3deg); box-shadow: 0 30px 60px -20px var(--glow);
-    }
-    .avatar::before {
-      content: ""; position: absolute; inset: -12px; border: 1px dashed var(--border); border-radius: 36px; transform: rotate(-6deg);
-    }
+    .avatar { position: relative; width: min(280px, 70vw); aspect-ratio: 1; border-radius: 28px; background: linear-gradient(145deg, var(--accent), #38bdf8); display: grid; place-items: center; font-size: 5.2rem; font-weight: 800; letter-spacing: -3px; color: var(--accent-ink); transform: rotate(3deg); box-shadow: 0 30px 60px -20px var(--glow); }
+    .avatar::before { content: ""; position: absolute; inset: -12px; border: 1px dashed var(--border); border-radius: 36px; transform: rotate(-6deg); }
     .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 28px; position: absolute; inset: 0; }
-    .float-chip {
-      position: absolute; background: var(--surface); color: var(--text); border: 1px solid var(--border);
-      border-radius: 10px; padding: 6px 12px; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0; font-weight: 500;
-      transform: rotate(-3deg); box-shadow: 0 10px 24px -10px rgba(0,0,0,.4);
-    }
+    .float-chip { position: absolute; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 6px 12px; font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0; font-weight: 500; transform: rotate(-3deg); box-shadow: 0 10px 24px -10px rgba(0,0,0,.4); z-index: 2; }
     .float-chip.c1 { left: -26px; bottom: 36px; }
     .float-chip.c1::before { content: "✓ "; color: var(--accent); }
     .float-chip.c2 { right: -18px; top: 28px; }
     .float-chip.c2::before { content: "● "; color: var(--danger); }
 
-    /* ---------- Sections ---------- */
+    /* Sections */
     section { padding: 84px 0; border-top: 1px solid var(--border); }
     section.alt { background: var(--bg-alt); }
     .eyebrow { font-family: var(--mono); color: var(--accent); font-size: 0.82rem; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
     h2 { font-size: clamp(1.6rem, 3.4vw, 2.1rem); letter-spacing: -0.6px; font-weight: 800; margin-bottom: 10px; }
+    h3.subhead { font-size: 1.1rem; font-weight: 700; margin: 44px 0 16px; }
     .sub { color: var(--muted); margin-bottom: 38px; max-width: 620px; }
 
-    /* ---------- Cards ---------- */
+    /* Cards */
     .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 18px; }
-    .card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px;
-      transition: border-color .2s, transform .2s, box-shadow .2s;
-    }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 24px; transition: border-color .2s, transform .2s, box-shadow .2s; }
     .card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 14px 30px -18px var(--glow); }
     .card .ico { width: 42px; height: 42px; border-radius: 10px; background: var(--accent-soft); display: grid; place-items: center; font-size: 1.2rem; margin-bottom: 14px; }
     .card h3 { font-size: 1.05rem; margin-bottom: 8px; font-weight: 700; }
     .card p { color: var(--muted); font-size: 0.93rem; }
+    .card .more { margin-top: 14px; }
     .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
     .chip { font-size: 0.78rem; font-family: var(--mono); color: var(--accent); background: var(--accent-soft); padding: 3px 10px; border-radius: 6px; }
     .placeholder { border-style: dashed; }
+    .repo-meta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 14px; font-size: 0.8rem; color: var(--muted); font-family: var(--mono); }
 
-    /* ---------- About ---------- */
+    /* About */
     .about { display: grid; grid-template-columns: 1.4fr 1fr; gap: 40px; align-items: start; }
     .about p { color: var(--muted); font-size: 1.02rem; margin-bottom: 14px; }
     .facts { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 8px 22px; }
@@ -199,13 +143,13 @@
     .facts span { color: var(--muted); }
     .facts b { font-weight: 600; text-align: right; }
 
-    /* ---------- Skills ---------- */
+    /* Skills */
     .skill-group h3 { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 12px; font-weight: 600; }
     .skill-group .chips { margin-top: 0; }
     .skill-group .chip { font-size: 0.85rem; padding: 6px 13px; border: 1px solid transparent; }
     .skill-group .chip:hover { border-color: var(--accent); }
 
-    /* ---------- Bug report sample ---------- */
+    /* Bug report */
     .bug { font-family: var(--mono); font-size: 0.85rem; padding: 0; overflow: hidden; }
     .bug-head { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 14px 18px; border-bottom: 1px solid var(--border); background: color-mix(in srgb, var(--surface) 70%, var(--bg)); }
     .bug-head b { font-weight: 600; font-family: "Inter", sans-serif; }
@@ -215,38 +159,28 @@
     .bug-body p b { color: var(--text); font-weight: 500; }
     .bug-body ol { padding-left: 20px; margin: 4px 0 8px; }
 
-    /* ---------- Timeline ---------- */
+    /* Timeline */
     .timeline { border-left: 2px solid var(--border); padding-left: 28px; margin-left: 6px; }
     .job { position: relative; margin-bottom: 38px; }
     .job:last-child { margin-bottom: 0; }
-    .job::before {
-      content: ""; position: absolute; left: -36px; top: 8px; width: 14px; height: 14px; border-radius: 50%;
-      background: var(--accent); box-shadow: 0 0 0 5px var(--accent-soft);
-    }
-    .job.past::before { background: var(--surface); border: 2px solid var(--accent); box-shadow: none; }
+    .job::before { content: ""; position: absolute; left: -36px; top: 8px; width: 14px; height: 14px; border-radius: 50%; background: var(--surface); border: 2px solid var(--accent); }
+    .job.current::before { background: var(--accent); box-shadow: 0 0 0 5px var(--accent-soft); border: 0; }
     .job .when { color: var(--accent); font-family: var(--mono); font-size: 0.8rem; }
     .job h3 { font-size: 1.15rem; margin: 3px 0 4px; font-weight: 700; }
     .job .org { color: var(--muted); font-size: 0.93rem; margin-bottom: 10px; }
     .job ul { padding-left: 18px; color: var(--muted); font-size: 0.95rem; }
     .job li { margin-bottom: 5px; }
 
-    /* ---------- Contact ---------- */
-    .contact-box {
-      background: linear-gradient(135deg, var(--accent-soft), transparent), var(--surface);
-      border: 1px solid var(--border); border-radius: 20px; padding: 44px; text-align: center;
-    }
-    .contact-box h2 { margin-bottom: 8px; }
+    /* Contact */
+    .contact-box { background: linear-gradient(135deg, var(--accent-soft), transparent), var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 44px; text-align: center; }
     .contact-box p { color: var(--muted); max-width: 520px; margin: 0 auto 26px; }
     .contact-list { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-    .contact-list a {
-      background: var(--surface); border: 1px solid var(--border); color: var(--text);
-      padding: 12px 22px; border-radius: 10px; font-weight: 500; font-size: 0.95rem; transition: border-color .2s, transform .15s;
-    }
+    .contact-list a { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 12px 22px; border-radius: 10px; font-weight: 500; font-size: 0.95rem; transition: border-color .2s, transform .15s; }
     .contact-list a:hover { border-color: var(--accent); text-decoration: none; transform: translateY(-2px); }
 
     footer { border-top: 1px solid var(--border); padding: 30px 0; color: var(--muted); font-size: 0.85rem; text-align: center; }
 
-    /* ---------- Reveal on scroll ---------- */
+    /* Reveal */
     .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) {
@@ -255,7 +189,6 @@
       html { scroll-behavior: auto; }
     }
 
-    /* ---------- Responsive ---------- */
     @media (max-width: 860px) {
       .hero-grid, .about { grid-template-columns: 1fr; }
       .avatar-wrap { order: -1; justify-content: flex-start; }
@@ -263,17 +196,12 @@
       .float-chip { display: none; }
       .hero { padding: 56px 0 56px; }
       .menu-btn { display: grid; }
-      nav ul {
-        position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; gap: 0;
-        background: var(--bg); border-bottom: 1px solid var(--border); padding: 8px 22px 14px; display: none;
-      }
+      nav ul { position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 8px 22px 14px; display: none; }
       nav ul.open { display: flex; }
       nav ul a { display: block; padding: 12px 0; font-size: 1rem; border-bottom: 0; }
       .contact-box { padding: 32px 20px; }
       section { padding: 64px 0; }
     }
-
-    /* ---------- Print (resume-friendly) ---------- */
     @media print {
       header, .hero::before, .hero::after, .btns, .icon-btn { display: none !important; }
       body { background: #fff; color: #000; }
@@ -289,12 +217,13 @@
       <a class="logo" href="#top">abdul<span>.qa</span></a>
       <div class="nav-right">
         <ul id="menu">
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">What I do</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li data-for="about"><a href="#about">About</a></li>
+          <li data-for="services"><a href="#services">What I do</a></li>
+          <li data-for="skills"><a href="#skills">Skills</a></li>
+          <li data-for="projects"><a href="#projects">Projects</a></li>
+          <li data-for="experience"><a href="#experience">Experience</a></li>
+          <li data-for="certs"><a href="#certs">Learning</a></li>
+          <li data-for="contact"><a href="#contact">Contact</a></li>
         </ul>
         <button class="icon-btn" id="theme" aria-label="Toggle light and dark theme" title="Toggle theme">☾</button>
         <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
@@ -304,35 +233,26 @@
 </header>
 
 <main id="top">
+  <div class="wrap" id="notices"></div>
+  <noscript><div class="wrap"><div class="notice">This portfolio needs JavaScript to show its content. Please enable JavaScript.</div></div></noscript>
 
-  <!-- ================= HERO ================= -->
+  <!-- HERO (static defaults stay in the HTML so search engines see them; data.json overrides them) -->
   <div class="hero">
     <div class="wrap hero-grid">
       <div>
-        <span class="tag"><i class="dot"></i> Currently testing at Ding</span>
-        <h1>Hi, I'm <span class="grad">Abdul Motalab</span>.</h1>
-        <div class="role" aria-live="polite">&gt; <b id="typed"></b><span class="caret"></span></div>
-        <!-- EDIT: rewrite this pitch in your own words -->
-        <p class="lead">QA Engineer in Bangladesh with 4.5 years of experience in software testing, regression, and API testing. I find the bugs users would have found, and help teams ship software they can trust.</p>
+        <span class="tag"><i class="dot"></i> <span id="badge">Currently testing at Ding</span></span>
+        <h1>Hi, I'm <span class="grad" id="name">Abdul Motalab</span>.</h1>
+        <div class="role" aria-live="polite">&gt; <b id="typed">QA Engineer</b><span class="caret"></span></div>
+        <p class="lead" id="pitch">QA Engineer in Bangladesh with 4.5 years of experience in software testing, regression, and API testing. I find the bugs users would have found, and help teams ship software they can trust.</p>
         <div class="btns">
           <a class="btn primary" href="#projects">View my work →</a>
-          <!-- EDIT: put your resume in the repo as resume.pdf -->
-          <a class="btn ghost" href="resume.pdf" download>Download resume</a>
+          <a class="btn ghost" id="resumeBtn" href="resume.pdf" download>Download resume</a>
         </div>
-        <div class="stats">
-          <div class="stat"><b>4.5+</b><small>Years in QA</small></div>
-          <div class="stat"><b>Ding</b><small>Current company</small></div>
-          <!-- EDIT: add a real metric and uncomment, e.g. "1,200+" / "Test cases written"
-          <div class="stat"><b>0</b><small>Your metric</small></div>
-          -->
-        </div>
+        <div class="stats" id="stats"></div>
       </div>
       <div class="avatar-wrap">
-        <div class="avatar" aria-label="Abdul Motalab">
-          AM
-          <!-- EDIT: to use your photo, add photo.jpg to the repo and uncomment the line below
-          <img src="photo.jpg" alt="Abdul Motalab">
-          -->
+        <div class="avatar" id="avatar" aria-label="Profile">
+          <span id="initials">AM</span>
           <span class="float-chip c1">tests passing</span>
           <span class="float-chip c2">bug found</span>
         </div>
@@ -340,193 +260,142 @@
     </div>
   </div>
 
-  <!-- ================= ABOUT ================= -->
-  <section id="about">
+  <section id="about" hidden>
     <div class="wrap about">
       <div class="reveal">
         <div class="eyebrow">About</div>
-        <h2>Quality is a team habit, not a last step.</h2>
-        <!-- EDIT: replace with your own story (2 short paragraphs works well) -->
-        <p>I'm a QA Engineer with 4.5 years of experience in software testing. I care about clear requirements, early feedback, and bug reports that developers can act on without a back-and-forth.</p>
-        <p>At Ding, I work closely with developers and product teams to keep releases reliable.</p>
+        <h2 id="aboutTitle"></h2>
+        <div id="aboutText"></div>
       </div>
-      <div class="facts reveal">
-        <div><span>Role</span><b>QA Engineer</b></div> <!-- EDIT: confirm exact title -->
-        <div><span>Experience</span><b>4.5 years</b></div>
-        <div><span>Current</span><b>Ding</b></div>
-        <div><span>Location</span><b>Dhaka, Bangladesh</b></div> <!-- EDIT: change or remove -->
-      </div>
+      <div class="facts reveal" id="facts"></div>
     </div>
   </section>
 
-  <!-- ================= WHAT I DO ================= -->
-  <section id="services" class="alt">
+  <section id="services" class="alt" hidden>
     <div class="wrap">
       <div class="reveal">
         <div class="eyebrow">What I do</div>
         <h2>How I help a team ship with confidence</h2>
         <p class="sub">The core of my day-to-day QA work.</p>
       </div>
-      <!-- EDIT: keep only what matches your real work -->
-      <div class="grid">
-        <div class="card reveal"><div class="ico">🧪</div><h3>Functional &amp; regression testing</h3><p>Verifying features against requirements and protecting existing behaviour with every release.</p></div>
-        <div class="card reveal"><div class="ico">📝</div><h3>Test planning &amp; design</h3><p>Turning requirements into clear test cases that cover happy paths, edge cases, and failure modes.</p></div>
-        <div class="card reveal"><div class="ico">🔌</div><h3>API testing</h3><p>Checking endpoints, payloads, and status codes so problems are caught before they reach the UI.</p></div>
-        <div class="card reveal"><div class="ico">🐞</div><h3>Bug reporting &amp; triage</h3><p>Reproducible, well-documented reports with severity and impact, so fixes happen faster.</p></div>
-      </div>
+      <div class="grid" id="servicesGrid"></div>
     </div>
   </section>
 
-  <!-- ================= SKILLS ================= -->
-  <section id="skills">
+  <section id="skills" hidden>
     <div class="wrap">
       <div class="reveal">
         <div class="eyebrow">Skills</div>
         <h2>Tools &amp; techniques</h2>
         <p class="sub">What I use day to day.</p>
       </div>
-      <!-- EDIT: keep only skills you really have; add missing ones -->
-      <div class="grid">
-        <div class="skill-group reveal">
-          <h3>Testing</h3>
-          <div class="chips">
-            <span class="chip">Manual Testing</span><span class="chip">Regression</span><span class="chip">Smoke / Sanity</span>
-            <span class="chip">Exploratory</span><span class="chip">Test Case Design</span>
-          </div>
-        </div>
-        <div class="skill-group reveal">
-          <h3>Automation &amp; API</h3>
-          <div class="chips">
-            <span class="chip">Postman</span>
-            <span class="chip">Add tool</span><span class="chip">Add tool</span>
-          </div>
-        </div>
-        <div class="skill-group reveal">
-          <h3>Process &amp; Tools</h3>
-          <div class="chips">
-            <span class="chip">Jira</span><span class="chip">Agile / Scrum</span><span class="chip">Git</span><span class="chip">Bug Reporting</span>
-          </div>
-        </div>
-      </div>
+      <div class="grid" id="skillsGrid"></div>
     </div>
   </section>
 
-  <!-- ================= PROJECTS ================= -->
-  <section id="projects" class="alt">
+  <section id="projects" class="alt" hidden>
     <div class="wrap">
       <div class="reveal">
         <div class="eyebrow">Projects</div>
         <h2>Selected work</h2>
-        <p class="sub">Frameworks, test plans, and write-ups. Replace the dashed placeholders with your own.</p>
+        <p class="sub">Frameworks, test plans, and write-ups.</p>
       </div>
-      <div class="grid">
-        <!-- EDIT: duplicate/remove cards. Replace href="#" with your repo link -->
-        <article class="card placeholder reveal">
-          <h3>Project name</h3>
-          <p>One or two lines: what you tested, how, and the result.</p>
-          <div class="chips"><span class="chip">Tool</span><span class="chip">Tool</span></div>
-          <p style="margin-top:14px"><a href="#">View on GitHub →</a></p>
-        </article>
-        <article class="card placeholder reveal">
-          <h3>Project name</h3>
-          <p>One or two lines: what you tested, how, and the result.</p>
-          <div class="chips"><span class="chip">Tool</span><span class="chip">Tool</span></div>
-          <p style="margin-top:14px"><a href="#">View on GitHub →</a></p>
-        </article>
-
-        <!-- Sample bug report: shows how you write. EDIT or replace with a real (non-confidential) example -->
-        <article class="card bug reveal" aria-label="Sample bug report">
-          <div class="bug-head"><b>Sample bug report</b><span class="sev">Severity: High</span></div>
-          <div class="bug-body">
-            <p><b>Title:</b> Login button stays disabled after valid credentials</p>
-            <p><b>Steps:</b></p>
-            <ol><li>Open the login page</li><li>Enter valid email + password</li><li>Observe the button</li></ol>
-            <p><b>Expected:</b> Button enabled, user can sign in</p>
-            <p><b>Actual:</b> Button remains disabled</p>
-          </div>
-        </article>
+      <div class="grid" id="projectsGrid"></div>
+      <div id="reposWrap" hidden>
+        <h3 class="subhead" id="reposTitle">More on GitHub</h3>
+        <div class="grid" id="reposGrid"></div>
       </div>
     </div>
   </section>
 
-  <!-- ================= EXPERIENCE ================= -->
-  <section id="experience">
+  <section id="experience" hidden>
     <div class="wrap">
       <div class="reveal">
         <div class="eyebrow">Experience</div>
         <h2>Where I've worked</h2>
-        <p class="sub">4.5 years of hands-on QA.</p>
+        <p class="sub">Hands-on QA experience.</p>
       </div>
-      <div class="timeline">
-        <div class="job reveal">
-          <div class="when">20XX – Present</div> <!-- EDIT: start date -->
-          <h3>QA Engineer</h3> <!-- EDIT: confirm job title -->
-          <div class="org">Ding</div>
-          <ul>
-            <!-- EDIT: add real achievements, ideally with numbers -->
-            <li>Responsible for testing and quality of Ding's products.</li>
-            <li>Add an achievement, e.g. "Reduced regression time by X%".</li>
-          </ul>
-        </div>
-        <div class="job past reveal">
-          <div class="when">20XX – 20XX</div>
-          <h3>Previous role</h3>
-          <div class="org">Previous company</div>
-          <ul><li>Add what you did and achieved here.</li></ul>
-        </div>
-      </div>
+      <div class="timeline" id="timeline"></div>
     </div>
   </section>
 
-  <!-- ================= CERTIFICATIONS ================= -->
-  <section id="certs" class="alt">
+  <section id="certs" class="alt" hidden>
     <div class="wrap">
       <div class="reveal">
         <div class="eyebrow">Learning</div>
         <h2>Certifications &amp; education</h2>
-        <p class="sub">Delete this whole section if you don't want it.</p>
+        <p class="sub">Formal learning and credentials.</p>
       </div>
-      <div class="grid">
-        <!-- EDIT: e.g. ISTQB Foundation Level, your degree, relevant courses -->
-        <div class="card placeholder reveal"><h3>Certification / Degree</h3><p>Issuer or university · Year</p></div>
-        <div class="card placeholder reveal"><h3>Certification / Course</h3><p>Issuer · Year</p></div>
-      </div>
+      <div class="grid" id="certsGrid"></div>
     </div>
   </section>
 
-  <!-- ================= CONTACT ================= -->
-  <section id="contact">
+  <section id="contact" hidden>
     <div class="wrap">
       <div class="contact-box reveal">
         <div class="eyebrow">Contact</div>
-        <h2>Let's talk quality.</h2>
-        <p>Open to conversations about testing, collaboration, and new opportunities.</p>
-        <!-- EDIT: replace with your real links -->
-        <div class="contact-list">
-          <a href="mailto:your.email@example.com">✉ Email</a>
-          <a href="https://www.linkedin.com/in/your-profile" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/motalab015" target="_blank" rel="noopener">GitHub</a>
-        </div>
+        <h2 id="contactHeading">Let's talk quality.</h2>
+        <p id="contactText"></p>
+        <div class="contact-list" id="contactList"></div>
       </div>
     </div>
   </section>
-
 </main>
 
 <footer>
-  <div class="wrap">© <span id="yr">2026</span> Abdul Motalab · QA Engineer</div>
+  <div class="wrap">© <span id="yr">2026</span> <span id="footName">Abdul Motalab</span> · QA Engineer</div>
 </footer>
 
 <script>
-  // Footer year
-  document.getElementById('yr').textContent = new Date().getFullYear();
+(function () {
+  'use strict';
 
-  // Theme toggle (remembers choice; safe if storage is blocked)
-  var root = document.documentElement, themeBtn = document.getElementById('theme');
-  function applyTheme(t) {
-    root.setAttribute('data-theme', t);
-    themeBtn.textContent = t === 'light' ? '☀' : '☾';
+  /* ---------- helpers ---------- */
+  function $(s) { return document.querySelector(s); }
+  function h(tag, props, kids) {
+    var e = document.createElement(tag);
+    if (props) for (var k in props) {
+      if (k === 'class') e.className = props[k];
+      else if (k === 'text') e.textContent = props[k];
+      else e.setAttribute(k, props[k]);
+    }
+    (kids || []).forEach(function (c) {
+      if (c == null) return;
+      e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+    });
+    return e;
   }
+  function safeUrl(u) {
+    if (!u) return '';
+    u = String(u).trim();
+    if (/^(https?:|mailto:|tel:)/i.test(u) || /^[\w.\/#-]+$/.test(u)) return u;
+    return '';
+  }
+  function arr(x) { return Array.isArray(x) ? x : []; }
+  function clear(el) { while (el.firstChild) el.removeChild(el.firstChild); }
+  function notice(parts) {
+    var box = h('div', { class: 'notice' });
+    parts.forEach(function (p) { box.appendChild(typeof p === 'string' ? document.createTextNode(p) : p); });
+    $('#notices').appendChild(box);
+  }
+  function chips(list) {
+    var c = h('div', { class: 'chips' });
+    arr(list).forEach(function (t) { c.appendChild(h('span', { class: 'chip', text: t })); });
+    return c;
+  }
+  function show(id) { var s = document.getElementById(id); if (s) s.hidden = false; }
+  function link(href, text, ext) {
+    var u = safeUrl(href);
+    if (!u) return null;
+    var a = h('a', { href: u, text: text });
+    if (ext && /^https?:/i.test(u)) { a.setAttribute('target', '_blank'); a.setAttribute('rel', 'noopener'); }
+    return a;
+  }
+
+  /* ---------- theme, menu, year ---------- */
+  $('#yr').textContent = new Date().getFullYear();
+  var root = document.documentElement, themeBtn = $('#theme');
+  function applyTheme(t) { root.setAttribute('data-theme', t); themeBtn.textContent = t === 'light' ? '☀' : '☾'; }
   var saved = null;
   try { saved = localStorage.getItem('theme'); } catch (e) {}
   applyTheme(saved || (window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
@@ -535,9 +404,7 @@
     applyTheme(next);
     try { localStorage.setItem('theme', next); } catch (e) {}
   });
-
-  // Mobile menu
-  var menu = document.getElementById('menu'), menuBtn = document.getElementById('menuBtn');
+  var menu = $('#menu'), menuBtn = $('#menuBtn');
   menuBtn.addEventListener('click', function () {
     var open = menu.classList.toggle('open');
     menuBtn.setAttribute('aria-expanded', open);
@@ -546,44 +413,244 @@
     if (e.target.tagName === 'A') { menu.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); }
   });
 
-  // Rotating role text
-  // EDIT: change the phrases to whatever you like
-  var roles = ['QA Engineer', 'Manual & API Testing', 'Bug Hunter', 'Quality Advocate'];
-  var el = document.getElementById('typed'), ri = 0, ci = 0, del = false;
-  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function tick() {
-    var word = roles[ri];
+  /* ---------- rotating role text ---------- */
+  var typingTimer = null;
+  function startTyping(roles) {
+    var el = $('#typed');
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    roles = arr(roles).filter(Boolean);
+    if (!roles.length) return;
     if (reduce) { el.textContent = roles[0]; return; }
-    el.textContent = word.slice(0, ci);
-    if (!del && ci < word.length) { ci++; setTimeout(tick, 80); }
-    else if (!del) { del = true; setTimeout(tick, 1400); }
-    else if (ci > 0) { ci--; setTimeout(tick, 40); }
-    else { del = false; ri = (ri + 1) % roles.length; setTimeout(tick, 250); }
+    var ri = 0, ci = 0, del = false;
+    clearTimeout(typingTimer);
+    (function tick() {
+      var word = roles[ri];
+      el.textContent = word.slice(0, ci);
+      if (!del && ci < word.length) { ci++; typingTimer = setTimeout(tick, 80); }
+      else if (!del) { del = true; typingTimer = setTimeout(tick, 1400); }
+      else if (ci > 0) { ci--; typingTimer = setTimeout(tick, 40); }
+      else { del = false; ri = (ri + 1) % roles.length; typingTimer = setTimeout(tick, 250); }
+    })();
   }
-  tick();
 
-  // Reveal on scroll
-  var revealEls = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
-    }, { threshold: 0.12 });
-    revealEls.forEach(function (n) { io.observe(n); });
-  } else { revealEls.forEach(function (n) { n.classList.add('in'); }); }
+  /* ---------- renderers ---------- */
+  function renderProfile(p) {
+    p = p || {};
+    if (p.name) { $('#name').textContent = p.name; $('#footName').textContent = p.name; }
+    if (p.initials) $('#initials').textContent = p.initials;
+    if (p.badge) $('#badge').textContent = p.badge;
+    if (p.pitch) $('#pitch').textContent = p.pitch;
+    var rb = $('#resumeBtn');
+    if (p.resume === '') rb.hidden = true;
+    else if (p.resume && safeUrl(p.resume)) rb.setAttribute('href', safeUrl(p.resume));
 
-  // Highlight current section in nav
-  var links = document.querySelectorAll('#menu a');
-  var secs = Array.prototype.map.call(links, function (a) { return document.querySelector(a.getAttribute('href')); });
-  if ('IntersectionObserver' in window) {
-    var so = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) {
-          links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
-        }
-      });
-    }, { rootMargin: '-45% 0px -50% 0px' });
-    secs.forEach(function (s) { if (s) so.observe(s); });
+    if (p.photo && safeUrl(p.photo)) {
+      var img = h('img', { src: safeUrl(p.photo), alt: p.name || 'Profile photo' });
+      img.addEventListener('error', function () { img.remove(); });
+      $('#avatar').insertBefore(img, $('#avatar').firstChild);
+    }
+    var stats = $('#stats'); clear(stats);
+    arr(p.stats).forEach(function (s) {
+      stats.appendChild(h('div', { class: 'stat' }, [h('b', { text: s.value }), h('small', { text: s.label })]));
+    });
+    startTyping(p.roles);
+
+    var about = arr(p.about), facts = arr(p.facts);
+    if (about.length || facts.length) {
+      show('about');
+      $('#aboutTitle').textContent = p.aboutTitle || 'About me';
+      var at = $('#aboutText'); clear(at);
+      about.forEach(function (t) { at.appendChild(h('p', { text: t })); });
+      var f = $('#facts'); clear(f);
+      if (facts.length) facts.forEach(function (x) { f.appendChild(h('div', null, [h('span', { text: x.label }), h('b', { text: x.value })])); });
+      else f.hidden = true;
+    }
   }
+
+  function renderServices(list) {
+    list = arr(list); if (!list.length) return;
+    show('services');
+    var g = $('#servicesGrid'); clear(g);
+    list.forEach(function (s) {
+      g.appendChild(h('div', { class: 'card reveal' }, [
+        s.icon ? h('div', { class: 'ico', text: s.icon }) : null,
+        h('h3', { text: s.title }), h('p', { text: s.text })
+      ]));
+    });
+  }
+
+  function renderSkills(list) {
+    list = arr(list); if (!list.length) return;
+    show('skills');
+    var g = $('#skillsGrid'); clear(g);
+    list.forEach(function (s) {
+      g.appendChild(h('div', { class: 'skill-group reveal' }, [h('h3', { text: s.group }), chips(s.items)]));
+    });
+  }
+
+  function bugCard(b) {
+    var steps = h('ol');
+    arr(b.steps).forEach(function (s) { steps.appendChild(h('li', { text: s })); });
+    return h('article', { class: 'card bug reveal', 'aria-label': b.label || 'Sample bug report' }, [
+      h('div', { class: 'bug-head' }, [h('b', { text: b.label || 'Sample bug report' }), h('span', { class: 'sev', text: 'Severity: ' + (b.severity || 'n/a') })]),
+      h('div', { class: 'bug-body' }, [
+        h('p', null, [h('b', { text: 'Title: ' }), b.title || '']),
+        h('p', null, [h('b', { text: 'Steps:' })]), steps,
+        h('p', null, [h('b', { text: 'Expected: ' }), b.expected || '']),
+        h('p', null, [h('b', { text: 'Actual: ' }), b.actual || ''])
+      ])
+    ]);
+  }
+
+  function renderProjects(list, bug) {
+    list = arr(list);
+    if (!list.length && !bug) return;
+    show('projects');
+    var g = $('#projectsGrid'); clear(g);
+    list.forEach(function (p) {
+      g.appendChild(h('article', { class: 'card reveal' + (p.placeholder ? ' placeholder' : '') }, [
+        h('h3', { text: p.title }),
+        h('p', { text: p.description }),
+        arr(p.tools).length ? chips(p.tools) : null,
+        link(p.link, p.linkLabel || 'View project →', true) ? h('p', { class: 'more' }, [link(p.link, p.linkLabel || 'View project →', true)]) : null
+      ]));
+    });
+    if (bug && typeof bug === 'object') g.appendChild(bugCard(bug));
+  }
+
+  function renderExperience(list) {
+    list = arr(list); if (!list.length) return;
+    show('experience');
+    var t = $('#timeline'); clear(t);
+    list.forEach(function (j) {
+      var ul = h('ul');
+      arr(j.points).forEach(function (pt) { ul.appendChild(h('li', { text: pt })); });
+      t.appendChild(h('div', { class: 'job reveal' + (j.current ? ' current' : '') }, [
+        h('div', { class: 'when', text: j.period }),
+        h('h3', { text: j.title }),
+        h('div', { class: 'org', text: j.company }),
+        arr(j.points).length ? ul : null
+      ]));
+    });
+  }
+
+  function renderCerts(list) {
+    list = arr(list); if (!list.length) return;
+    show('certs');
+    var g = $('#certsGrid'); clear(g);
+    list.forEach(function (c) {
+      var line = [c.issuer, c.year].filter(Boolean).join(' · ');
+      g.appendChild(h('div', { class: 'card reveal' + (c.placeholder ? ' placeholder' : '') }, [h('h3', { text: c.title }), line ? h('p', { text: line }) : null]));
+    });
+  }
+
+  function renderContact(c) {
+    if (!c) return;
+    var list = $('#contactList'); clear(list);
+    var items = [];
+    if (c.email) items.push(link('mailto:' + c.email, '✉ Email', false));
+    if (c.linkedin) items.push(link(c.linkedin, 'LinkedIn', true));
+    if (c.github) items.push(link(c.github, 'GitHub', true));
+    arr(c.other).forEach(function (o) { items.push(link(o.url, o.label, true)); });
+    items = items.filter(Boolean);
+    if (!items.length) return;
+    show('contact');
+    if (c.heading) $('#contactHeading').textContent = c.heading;
+    $('#contactText').textContent = c.text || '';
+    items.forEach(function (a) { list.appendChild(a); });
+  }
+
+  function renderRepos(cfg) {
+    if (!cfg || !cfg.enabled || !cfg.username) return Promise.resolve();
+    var topic = (cfg.topic || '').toLowerCase();
+    return fetch('https://api.github.com/users/' + encodeURIComponent(cfg.username) + '/repos?per_page=100&sort=updated')
+      .then(function (r) { if (!r.ok) throw new Error('GitHub API ' + r.status); return r.json(); })
+      .then(function (repos) {
+        repos = arr(repos).filter(function (r) {
+          return !r.fork && !r.archived && (!topic || arr(r.topics).map(function (t) { return String(t).toLowerCase(); }).indexOf(topic) !== -1);
+        });
+        if (!repos.length) return;
+        show('projects');
+        $('#reposWrap').hidden = false;
+        if (cfg.title) $('#reposTitle').textContent = cfg.title;
+        var g = $('#reposGrid'); clear(g);
+        repos.forEach(function (r) {
+          var meta = h('div', { class: 'repo-meta' });
+          if (r.language) meta.appendChild(h('span', { text: r.language }));
+          if (r.stargazers_count) meta.appendChild(h('span', { text: '★ ' + r.stargazers_count }));
+          if (r.pushed_at) meta.appendChild(h('span', { text: 'Updated ' + String(r.pushed_at).slice(0, 10) }));
+          g.appendChild(h('article', { class: 'card reveal' }, [
+            h('h3', { text: r.name }),
+            h('p', { text: r.description || 'No description yet.' }),
+            meta,
+            h('p', { class: 'more' }, [link(r.html_url, 'View on GitHub →', true)])
+          ]));
+        });
+      })
+      .catch(function () { /* silently skip: the section just stays hidden */ });
+  }
+
+  /* ---------- scroll reveal + nav highlight ---------- */
+  function setupObservers() {
+    var els = document.querySelectorAll('.reveal:not(.in)');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, { threshold: 0.12 });
+      els.forEach(function (n) { io.observe(n); });
+    } else { els.forEach(function (n) { n.classList.add('in'); }); }
+
+    // hide nav items for sections that are empty/hidden
+    document.querySelectorAll('#menu li').forEach(function (li) {
+      var s = document.getElementById(li.getAttribute('data-for'));
+      li.hidden = !s || s.hidden;
+    });
+    var links = document.querySelectorAll('#menu li:not([hidden]) a');
+    if ('IntersectionObserver' in window) {
+      var so = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) links.forEach(function (a) { a.classList.toggle('active', a.getAttribute('href') === '#' + en.target.id); });
+        });
+      }, { rootMargin: '-45% 0px -50% 0px' });
+      links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) so.observe(s); });
+    }
+  }
+
+  /* ---------- load data.json ---------- */
+  function codeEl(t) { return h('code', { text: t }); }
+
+  if (location.protocol === 'file:') {
+    notice(['Preview note: browsers block ', codeEl('data.json'), ' when this page is opened directly from disk. It works on GitHub Pages, or locally with ', codeEl('python -m http.server'), '.']);
+    setupObservers();
+    return;
+  }
+
+  fetch('data.json', { cache: 'no-cache' })
+    .then(function (r) {
+      if (!r.ok) throw new Error('data.json returned ' + r.status);
+      return r.text();
+    })
+    .then(function (txt) {
+      var d;
+      try { d = JSON.parse(txt); }
+      catch (e) {
+        notice(['Your ', codeEl('data.json'), ' has a syntax error, so the content could not be shown. Check for a missing comma or quote. Details: ' + e.message]);
+        return;
+      }
+      renderProfile(d.profile);
+      renderServices(d.services);
+      renderSkills(d.skills);
+      renderProjects(d.projects, d.bugReport);
+      renderExperience(d.experience);
+      renderCerts(d.certifications);
+      renderContact(d.contact);
+      return renderRepos(d.githubRepos);
+    })
+    .catch(function (e) {
+      notice(['Could not load ', codeEl('data.json'), ' (' + e.message + '). Make sure the file is in the same folder as index.html.']);
+    })
+    .then(setupObservers);
+})();
 </script>
 </body>
 </html>

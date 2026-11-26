@@ -1,0 +1,106 @@
+{
+  "profile": {
+    "name": "Abdul Motalab",
+    "initials": "AM",
+    "photo": "",
+    "badge": "Currently testing at Ding",
+    "roles": ["QA Engineer", "Manual & API Testing", "Bug Hunter", "Quality Advocate"],
+    "pitch": "QA Engineer in Bangladesh with 4.5 years of experience in software testing, regression, and API testing. I find the bugs users would have found, and help teams ship software they can trust.",
+    "resume": "resume.pdf",
+    "stats": [
+      { "value": "4.5+", "label": "Years in QA" },
+      { "value": "Ding", "label": "Current company" }
+    ],
+    "aboutTitle": "Quality is a team habit, not a last step.",
+    "about": [
+      "I'm a QA Engineer with 4.5 years of experience in software testing. I care about clear requirements, early feedback, and bug reports that developers can act on without a back-and-forth.",
+      "At Ding, I work closely with developers and product teams to keep releases reliable."
+    ],
+    "facts": [
+      { "label": "Role", "value": "QA Engineer" },
+      { "label": "Experience", "value": "4.5 years" },
+      { "label": "Current", "value": "Ding" },
+      { "label": "Location", "value": "Dhaka, Bangladesh" }
+    ]
+  },
+
+  "services": [
+    { "icon": "🧪", "title": "Functional & regression testing", "text": "Verifying features against requirements and protecting existing behaviour with every release." },
+    { "icon": "📝", "title": "Test planning & design", "text": "Turning requirements into clear test cases that cover happy paths, edge cases, and failure modes." },
+    { "icon": "🔌", "title": "API testing", "text": "Checking endpoints, payloads, and status codes so problems are caught before they reach the UI." },
+    { "icon": "🐞", "title": "Bug reporting & triage", "text": "Reproducible, well-documented reports with severity and impact, so fixes happen faster." }
+  ],
+
+  "skills": [
+    { "group": "Testing", "items": ["Manual Testing", "Regression", "Smoke / Sanity", "Exploratory", "Test Case Design"] },
+    { "group": "Automation & API", "items": ["Postman", "Add tool", "Add tool"] },
+    { "group": "Process & Tools", "items": ["Jira", "Agile / Scrum", "Git", "Bug Reporting"] }
+  ],
+
+  "projects": [
+    {
+      "placeholder": true,
+      "title": "Project name",
+      "description": "One or two lines: what you tested, how, and the result.",
+      "tools": ["Tool", "Tool"],
+      "link": "",
+      "linkLabel": "View on GitHub →"
+    },
+    {
+      "placeholder": true,
+      "title": "Project name",
+      "description": "One or two lines: what you tested, how, and the result.",
+      "tools": ["Tool", "Tool"],
+      "link": "",
+      "linkLabel": "View on GitHub →"
+    }
+  ],
+
+  "bugReport": {
+    "label": "Sample bug report",
+    "severity": "High",
+    "title": "Login button stays disabled after valid credentials",
+    "steps": ["Open the login page", "Enter valid email + password", "Observe the button"],
+    "expected": "Button enabled, user can sign in",
+    "actual": "Button remains disabled"
+  },
+
+  "experience": [
+    {
+      "current": true,
+      "period": "20XX – Present",
+      "title": "QA Engineer",
+      "company": "Ding",
+      "points": [
+        "Responsible for testing and quality of Ding's products.",
+        "Add an achievement, e.g. \"Reduced regression time by X%\"."
+      ]
+    },
+    {
+      "period": "20XX – 20XX",
+      "title": "Previous role",
+      "company": "Previous company",
+      "points": ["Add what you did and achieved here."]
+    }
+  ],
+
+  "certifications": [
+    { "placeholder": true, "title": "Certification / Degree", "issuer": "Issuer or university", "year": "Year" },
+    { "placeholder": true, "title": "Certification / Course", "issuer": "Issuer", "year": "Year" }
+  ],
+
+  "contact": {
+    "heading": "Let's talk quality.",
+    "text": "Open to conversations about testing, collaboration, and new opportunities.",
+    "email": "your.email@example.com",
+    "linkedin": "https://www.linkedin.com/in/your-profile",
+    "github": "https://github.com/motalab015"
+  },
+
+  "githubRepos": {
+    "enabled": true,
+    "username": "motalab015",
+    "topic": "portfolio",
+    "title": "More on GitHub"
+  }
+}
