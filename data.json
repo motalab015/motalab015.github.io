@@ -1,57 +1,58 @@
 {
+  "_note": "Everything on the site is edited here. Keys starting with an underscore are ignored by the page.",
+
   "profile": {
     "name": "Abdul Motalab",
     "initials": "AM",
     "photo": "",
     "badge": "Currently testing at Ding",
-    "roles": ["QA Engineer", "Manual & API Testing", "Bug Hunter", "Quality Advocate"],
-    "pitch": "QA Engineer in Bangladesh with 4.5 years of experience in software testing, regression, and API testing. I find the bugs users would have found, and help teams ship software they can trust.",
+    "roles": ["QA Engineer", "Web, iOS & Android Testing", "API Testing", "Growing into Test Automation"],
+    "pitch": "QA Engineer in Bangladesh with 4.5 years of experience testing web, iOS and Android products and owning regression and release quality. Now building test automation skills with Playwright, CI/CD and AI-assisted QA.",
     "resume": "resume.pdf",
     "stats": [
       { "value": "4.5+", "label": "Years in QA" },
-      { "value": "Ding", "label": "Current company" }
+      { "value": "20–30%", "label": "Less regression time" },
+      { "value": "3", "label": "Platforms: web, iOS, Android" }
     ],
     "aboutTitle": "Quality is a team habit, not a last step.",
     "about": [
-      "I'm a QA Engineer with 4.5 years of experience in software testing. I care about clear requirements, early feedback, and bug reports that developers can act on without a back-and-forth.",
-      "At Ding, I work closely with developers and product teams to keep releases reliable."
+      "I'm a QA Engineer with 4.5 years of experience in software testing. At Ding I test across web, iOS and Android, lead regression testing, and own release-level quality, including go/no-go decisions with the development team.",
+      "I'm now growing into test automation. I'm learning Playwright with JavaScript, CI/CD with GitHub Actions, API automation and AI-assisted QA, so I can turn the regression work I do today into automated checks. I hold a BSc in Computer Science from Daffodil International University."
     ],
     "facts": [
       { "label": "Role", "value": "QA Engineer" },
       { "label": "Experience", "value": "4.5 years" },
       { "label": "Current", "value": "Ding" },
-      { "label": "Location", "value": "Dhaka, Bangladesh" }
+      { "label": "Location", "value": "Dhaka, Bangladesh" },
+      { "label": "Education", "value": "BSc, Computer Science" },
+      { "label": "Learning now", "value": "Playwright, CI/CD, AI in QA" }
     ]
   },
 
   "services": [
-    { "icon": "🧪", "title": "Functional & regression testing", "text": "Verifying features against requirements and protecting existing behaviour with every release." },
-    { "icon": "📝", "title": "Test planning & design", "text": "Turning requirements into clear test cases that cover happy paths, edge cases, and failure modes." },
-    { "icon": "🔌", "title": "API testing", "text": "Checking endpoints, payloads, and status codes so problems are caught before they reach the UI." },
-    { "icon": "🐞", "title": "Bug reporting & triage", "text": "Reproducible, well-documented reports with severity and impact, so fixes happen faster." }
+    { "icon": "📱", "title": "End-to-end testing, web & mobile", "text": "Functional, regression and cross-platform testing across web, iOS and Android, including beta builds before release." },
+    { "icon": "🚦", "title": "Regression & release ownership", "text": "Leading regression before each release, maintaining the suites, and making go/no-go calls with the development team." },
+    { "icon": "🔌", "title": "API & database testing", "text": "Verifying user and payment APIs with Postman, and checking data integrity in MongoDB." },
+    { "icon": "📝", "title": "Requirement review & test design", "text": "Reviewing requirements and acceptance criteria for testability, then turning them into clear test cases and scenarios." },
+    { "icon": "🐞", "title": "Defect management", "text": "Reproducible bug reports, daily triage and retesting through the full defect lifecycle." },
+    { "icon": "⚙️", "title": "Test automation (learning)", "text": "Building Playwright (JavaScript) skills for UI and API automation, with CI/CD and AI-assisted QA, to support automated regression." }
   ],
 
   "skills": [
-    { "group": "Testing", "items": ["Manual Testing", "Regression", "Smoke / Sanity", "Exploratory", "Test Case Design"] },
-    { "group": "Automation & API", "items": ["Postman", "Add tool", "Add tool"] },
-    { "group": "Process & Tools", "items": ["Jira", "Agile / Scrum", "Git", "Bug Reporting"] }
+    { "group": "Testing", "items": ["Manual Testing", "Regression Testing", "End-to-End Testing", "Cross-platform Testing", "Release Validation", "Production Testing", "A/B Test Validation", "Test Case Design", "Bug Reporting"] },
+    { "group": "Platforms & Mobile", "items": ["Web", "iOS", "Android", "TestFlight", "Google Firebase"] },
+    { "group": "API & Data", "items": ["Postman", "REST APIs", "MongoDB"] },
+    { "group": "Test Management & Delivery", "items": ["TestRail", "Kanbanize", "Jenkins", "Octopus Deploy"] },
+    { "group": "Process", "items": ["Agile / Scrum", "Requirement Analysis", "Git & GitHub"] },
+    { "group": "Currently Learning: Automation & AI", "items": ["Playwright (JavaScript)", "UI Test Automation", "API Test Automation", "CI/CD with GitHub Actions", "AI-assisted QA"] }
   ],
 
   "projects": [
     {
-      "placeholder": true,
-      "title": "Project name",
-      "description": "One or two lines: what you tested, how, and the result.",
-      "tools": ["Tool", "Tool"],
-      "link": "",
-      "linkLabel": "View on GitHub →"
-    },
-    {
-      "placeholder": true,
-      "title": "Project name",
-      "description": "One or two lines: what you tested, how, and the result.",
-      "tools": ["Tool", "Tool"],
-      "link": "",
+      "title": "Playwright + GitHub Actions (learning project)",
+      "description": "Practice project for my automation learning: Playwright (JavaScript) tests run through a GitHub Actions workflow. Focus areas: login flows, form validation and REST API checks.",
+      "tools": ["Playwright", "JavaScript", "GitHub Actions"],
+      "link": "https://github.com/motalab015/GitHub_Actions",
       "linkLabel": "View on GitHub →"
     }
   ],
@@ -68,25 +69,43 @@
   "experience": [
     {
       "current": true,
-      "period": "20XX – Present",
+      "period": "Aug 2024 – Present",
       "title": "QA Engineer",
-      "company": "Ding",
+      "company": "Ding · Dhaka, Bangladesh · Hybrid",
       "points": [
-        "Responsible for testing and quality of Ding's products.",
-        "Add an achievement, e.g. \"Reduced regression time by X%\"."
+        "End-to-end QA across web, iOS and Android: functional, regression and cross-platform testing.",
+        "Lead regression testing and maintain the regression suites, reducing regression testing time by 20–30%.",
+        "Own release-level quality validation and go/no-go decisions in coordination with the development team.",
+        "Perform production testing and post-deployment monitoring. Significantly reduced the production bug rate, with no major production issues since taking ownership of the process.",
+        "API testing of user and payment modules with Postman; database validation with MongoDB.",
+        "Test beta builds through TestFlight (iOS) and Android beta channels; use Google Firebase for release distribution, monitoring and crash reporting.",
+        "Coordinate deployments with Octopus Deploy and Jenkins CI/CD; support A/B testing by validating feature variants and tracking accuracy.",
+        "Manage test cases in TestRail and defects in Kanbanize; review requirements and acceptance criteria; take part in sprint planning, backlog refinement and release planning.",
+        "Learning Playwright (JavaScript) for UI and API automation, to support future automated regression testing."
       ]
     },
     {
-      "period": "20XX – 20XX",
-      "title": "Previous role",
-      "company": "Previous company",
-      "points": ["Add what you did and achieved here."]
+      "period": "Jul 2022 – Aug 2024",
+      "title": "Junior QA Engineer",
+      "company": "Ding · Dhaka, Bangladesh",
+      "points": [
+        "Regression testing."
+      ]
+    },
+    {
+      "period": "Dec 2021 – Jul 2022",
+      "title": "Software Quality Assurance Engineer",
+      "company": "Developer eXperience Hub · Rajshahi, Bangladesh",
+      "points": [
+        "Manual test case creation.",
+        "API testing with Postman.",
+        "Regression testing."
+      ]
     }
   ],
 
   "certifications": [
-    { "placeholder": true, "title": "Certification / Degree", "issuer": "Issuer or university", "year": "Year" },
-    { "placeholder": true, "title": "Certification / Course", "issuer": "Issuer", "year": "Year" }
+    { "title": "BSc in Computer Science", "issuer": "Daffodil International University", "year": "2017 – Jun 2021" }
   ],
 
   "contact": {

@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- SEO: keep the name first in the title; keywords after it -->
-  <title>Abdul Motalab | QA Engineer in Bangladesh | Software Testing &amp; API Testing</title>
-  <meta name="description" content="Abdul Motalab is a QA Engineer from Bangladesh with 4.5 years of experience in software testing, regression and API testing. Currently at Ding. See projects and experience.">
+  <title>Abdul Motalab | QA Engineer in Bangladesh | Web, Mobile &amp; API Testing</title>
+  <meta name="description" content="Abdul Motalab is a QA Engineer from Bangladesh with 4.5 years of experience in web, iOS and Android testing, API testing and release quality. Currently at Ding, building test automation skills with Playwright, CI/CD and AI-assisted QA.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://motalab015.github.io/">
   <meta name="author" content="Abdul Motalab">
@@ -14,11 +14,10 @@
   <meta property="og:site_name" content="Abdul Motalab">
   <meta property="og:url" content="https://motalab015.github.io/">
   <meta property="og:title" content="Abdul Motalab | QA Engineer in Bangladesh">
-  <meta property="og:description" content="QA Engineer with 4.5 years of experience in software testing and API testing. Currently at Ding.">
+  <meta property="og:description" content="QA Engineer with 4.5 years of experience in web, mobile and API testing. Currently at Ding, learning Playwright, CI/CD and AI-assisted QA.">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Abdul Motalab | QA Engineer in Bangladesh">
-  <meta name="twitter:description" content="QA Engineer with 4.5 years of experience in software testing and API testing. Currently at Ding.">
-  <!-- EDIT: add your LinkedIn URL to "sameAs" below. Add "Test Automation" to knowsAbout only if it is true for you. -->
+  <meta name="twitter:description" content="QA Engineer with 4.5 years of experience in web, mobile and API testing. Currently at Ding, learning Playwright, CI/CD and AI-assisted QA.">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -28,8 +27,9 @@
     "url": "https://motalab015.github.io/",
     "worksFor": { "@type": "Organization", "name": "Ding" },
     "address": { "@type": "PostalAddress", "addressCountry": "BD" },
-    "knowsAbout": ["Software Testing", "Manual Testing", "Regression Testing", "API Testing", "Bug Reporting"],
-    "sameAs": ["https://github.com/motalab015"]
+    "alumniOf": { "@type": "CollegeOrUniversity", "name": "Daffodil International University" },
+    "knowsAbout": ["Software Testing", "Regression Testing", "Manual Testing", "Mobile App Testing", "API Testing", "Release Validation", "Bug Reporting"],
+    "sameAs": ["https://github.com/motalab015", "https://www.linkedin.com/in/abdul-motalab/"]
   }
   </script>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232dd4bf'/%3E%3Ctext x='32' y='43' font-size='30' font-family='Arial' font-weight='700' text-anchor='middle' fill='%2304211d'%3EAM%3C/text%3E%3C/svg%3E">
@@ -243,7 +243,7 @@
         <span class="tag"><i class="dot"></i> <span id="badge">Currently testing at Ding</span></span>
         <h1>Hi, I'm <span class="grad" id="name">Abdul Motalab</span>.</h1>
         <div class="role" aria-live="polite">&gt; <b id="typed">QA Engineer</b><span class="caret"></span></div>
-        <p class="lead" id="pitch">QA Engineer in Bangladesh with 4.5 years of experience in software testing, regression, and API testing. I find the bugs users would have found, and help teams ship software they can trust.</p>
+        <p class="lead" id="pitch">QA Engineer in Bangladesh with 4.5 years of experience testing web, iOS and Android products and owning regression and release quality. Now building test automation skills with Playwright, CI/CD and AI-assisted QA.</p>
         <div class="btns">
           <a class="btn primary" href="#projects">View my work →</a>
           <a class="btn ghost" id="resumeBtn" href="resume.pdf" download>Download resume</a>
@@ -560,14 +560,16 @@
     items.forEach(function (a) { list.appendChild(a); });
   }
 
-  function renderRepos(cfg) {
+  function renderRepos(cfg, knownLinks) {
     if (!cfg || !cfg.enabled || !cfg.username) return Promise.resolve();
     var topic = (cfg.topic || '').toLowerCase();
+    // repos already shown as project cards are not repeated in the auto-list
+    var known = arr(knownLinks).filter(Boolean).map(function (u) { return String(u).toLowerCase().replace(/\/+$/, ''); });
     return fetch('https://api.github.com/users/' + encodeURIComponent(cfg.username) + '/repos?per_page=100&sort=updated')
       .then(function (r) { if (!r.ok) throw new Error('GitHub API ' + r.status); return r.json(); })
       .then(function (repos) {
         repos = arr(repos).filter(function (r) {
-          return !r.fork && !r.archived && (!topic || arr(r.topics).map(function (t) { return String(t).toLowerCase(); }).indexOf(topic) !== -1);
+          return !r.fork && !r.archived && known.indexOf(String(r.html_url).toLowerCase()) === -1 && (!topic || arr(r.topics).map(function (t) { return String(t).toLowerCase(); }).indexOf(topic) !== -1);
         });
         if (!repos.length) return;
         show('projects');
@@ -644,7 +646,7 @@
       renderExperience(d.experience);
       renderCerts(d.certifications);
       renderContact(d.contact);
-      return renderRepos(d.githubRepos);
+      return renderRepos(d.githubRepos, arr(d.projects).map(function (p) { return p && p.link; }));
     })
     .catch(function (e) {
       notice(['Could not load ', codeEl('data.json'), ' (' + e.message + '). Make sure the file is in the same folder as index.html.']);
